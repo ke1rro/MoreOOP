@@ -7,6 +7,7 @@ public class GameManager {
 
     /**
      * Manages a fight between two characters until one dies
+     *
      * @param c1 First character
      * @param c2 Second character
      */
@@ -21,7 +22,6 @@ public class GameManager {
         while (c1.isAlive() && c2.isAlive()) {
             System.out.println("\n--- Round " + round + " ---");
 
-            // Fighter 1 attacks Fighter 2
             if (c1.isAlive() && c2.isAlive()) {
                 System.out.println(getCharacterName(c1) + " attacks " + getCharacterName(c2) + ":");
                 c1.kick(c2);
@@ -32,18 +32,16 @@ public class GameManager {
                 }
             }
 
-            // Fighter 2 attacks Fighter 1
             if (c1.isAlive() && c2.isAlive()) {
                 System.out.println(getCharacterName(c2) + " attacks " + getCharacterName(c1) + ":");
                 c2.kick(c1);
 
                 if (!c1.isAlive()) {
-                    System.out.println("💀 " + getCharacterName(c1) + " has been defeated!");
+                    System.out.println(getCharacterName(c1) + " has been defeated!");
                     break;
                 }
             }
 
-            // Show current status
             if (c1.isAlive() && c2.isAlive()) {
                 System.out.println("\nCurrent status:");
                 System.out.println(getCharacterInfo(c1, getCharacterName(c1)));
@@ -51,15 +49,12 @@ public class GameManager {
             }
 
             round++;
-
-            // Safety break to avoid infinite loops (especially with Hobbit vs Hobbit)
             if (round > 100) {
                 System.out.println("🤝 Fight ended in a draw after 100 rounds!");
                 return;
             }
         }
 
-        // Determine winner
         if (c1.isAlive()) {
             System.out.println("\n" + getCharacterName(c1) + " WINS!");
         } else if (c2.isAlive()) {
@@ -72,6 +67,7 @@ public class GameManager {
 
     /**
      * Gets character name from class name
+     *
      * @param character Character instance
      * @return Character class name
      */
@@ -81,15 +77,16 @@ public class GameManager {
 
     /**
      * Gets formatted character information
+     *
      * @param character Character instance
-     * @param label Label for the character
+     * @param label     Label for the character
      * @return Formatted string with character info
      */
     private String getCharacterInfo(Character character, String label) {
         return String.format("%s (%s): HP = %d, Power = %d",
-            label,
-            getCharacterName(character),
-            character.getHp(),
-            character.getPower());
+                label,
+                getCharacterName(character),
+                character.getStats().getHp(),
+                character.getStats().getPower());
     }
 }

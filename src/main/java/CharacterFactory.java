@@ -15,16 +15,19 @@ public abstract class CharacterFactory {
 
     /**
      * Factory method to create a character
+     *
      * @return Character instance
      */
     public abstract Character createCharacter();
 
     /**
-     * Creates a random character instance using reflections to discover all Character implementations
+     * Creates a random character instance using reflections to discover all
+     * Character implementations
+     *
      * @return Random Character instance
      */
     @SneakyThrows
-    public static Character createRandomCharacter(){
+    public static Character createRandomCharacter() {
         Reflections reflections = new Reflections("characters");
         Set<Class<? extends Character>> characterClasses = reflections.getSubTypesOf(Character.class);
 

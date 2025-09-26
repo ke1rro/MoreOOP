@@ -1,43 +1,15 @@
 package characters;
-// Character interface
 
 /**
- * Interface which represents unit in game
+ * Interface which represents unit in game.
+ * Uses composition with CharacterStats for stat management.
  */
-public interface Character{
-
-    /**
-     * Getter for hit points of unit.
-     *
-     * @return The hit points of unit.
-     */
-    int getHp();
-
-    /**
-     * Setter for hit points of unit.
-     *
-     * @param hp The hp to set to the unit.
-     */
-    void setHp(int hp);
-
-    /**
-     * Getter for the power of unit.
-     *
-     * @return The power of unit.
-     */
-    int getPower();
-
-    /**
-     * Setter fot the power of unit.
-     *
-     * @param power The power to be set to the unit.
-     */
-    void setPower(int power);
+public interface Character {
 
     /**
      * Does an action 'kick' against another Character
      *
-     * @param other Charatcter the action 'kick' to be done
+     * @param other Character the action 'kick' to be done against
      */
     void kick(Character other);
 
@@ -47,5 +19,12 @@ public interface Character{
      * @return True if hp > 0 else False.
      */
     boolean isAlive();
+
+    /**
+     * Get the character's stats manager
+     *
+     * @return CharacterStats instance managing this character's stats
+     */
+    CharacterStats getStats();
 
 }

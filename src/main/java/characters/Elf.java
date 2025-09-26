@@ -1,32 +1,31 @@
 package characters;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-public class Elf implements Character{
-    private int hp = 10;
-    @Setter
-    private int power = 10;
+public class Elf implements Character {
+    private CharacterStats stats;
 
-    @Override
-    public void setHp(int hp){
-        this.hp = (hp < 0) ? 0 : hp;
+    public Elf() {
+        this.stats = new CharacterStats(10, 10);
     }
 
     @Override
-    public boolean isAlive(){
-        return hp > 0;
+    public CharacterStats getStats() {
+        return stats;
     }
 
     @Override
-    public void kick(Character other){
-        if (power > other.getPower()){
-            other.setHp(0);
+    public boolean isAlive() {
+        return stats.isAlive();
+    }
+
+    @Override
+    public void kick(Character other) {
+        if (stats.getPower() > other.getStats().getPower()) {
+            other.getStats().setHp(0);
             System.out.println("Elf kills the enemy!");
-        }
-        else{
-            other.setPower(other.getPower() - power);
-            System.out.println("Elf hit -" + getPower() + " and decreased the enemy power to " + other.getPower());
+        } else {
+            other.getStats().reducePower(stats.getPower());
+            System.out.println("Elf hit -" + stats.getPower() + " and decreased the enemy power to "
+                    + other.getStats().getPower());
         }
     }
 }
