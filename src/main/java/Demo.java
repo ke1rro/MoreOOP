@@ -1,6 +1,8 @@
 import characters.Character;
 
 public class Demo {
+    private static GameManager gameManager = new GameManager();
+
     public static void main(String args[]) {
         System.out.println("Welcome to the Character Fight Game!\n");
 
@@ -23,6 +25,7 @@ public class Demo {
         System.out.println("\n" + "=".repeat(50));
 
         System.out.println("\nCreating random characters using reflections:");
+        System.out.println("Available character types: " + CharacterFactory.getAvailableCharacterTypes());
 
         Character randomChar1 = CharacterFactory.createRandomCharacter();
         Character randomChar2 = CharacterFactory.createRandomCharacter();
@@ -35,8 +38,6 @@ public class Demo {
         System.out.println("\n" + "=".repeat(50));
 
         System.out.println("\nStarting a fight between two random characters:\n");
-
-        GameManager gameManager = new GameManager();
         gameManager.fight(randomChar1, randomChar2);
 
         System.out.println("\n" + "=".repeat(50));

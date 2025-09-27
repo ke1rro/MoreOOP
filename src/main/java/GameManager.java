@@ -15,12 +15,11 @@ public class GameManager {
         System.out.println("FIGHT BEGINS!");
         System.out.println(getCharacterInfo(c1, "Fighter 1"));
         System.out.println(getCharacterInfo(c2, "Fighter 2"));
-        System.out.println("==================================================");
 
         int round = 1;
 
         while (c1.isAlive() && c2.isAlive()) {
-            System.out.println("\n--- Round " + round + " ---");
+            System.out.printf("------ Round %d ------%n", round);
 
             if (c1.isAlive() && c2.isAlive()) {
                 System.out.println(getCharacterName(c1) + " attacks " + getCharacterName(c2) + ":");
@@ -50,7 +49,7 @@ public class GameManager {
 
             round++;
             if (round > 100) {
-                System.out.println("🤝 Fight ended in a draw after 100 rounds!");
+                System.out.println("Fight ended in a draw after 100 rounds!");
                 return;
             }
         }
@@ -61,7 +60,7 @@ public class GameManager {
             System.out.println("\n" + getCharacterName(c2) + " WINS!");
         }
 
-        System.out.println("==================================================");
+        System.out.println("=".repeat(50));
         System.out.println("Fight completed after " + (round - 1) + " rounds!");
     }
 

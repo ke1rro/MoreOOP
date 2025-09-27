@@ -1,15 +1,13 @@
 package characters;
 
+import lombok.Getter;
+
 public class Hobbit implements Character {
+    @Getter
     private CharacterStats stats;
 
     public Hobbit() {
         this.stats = new CharacterStats(3, 0);
-    }
-
-    @Override
-    public CharacterStats getStats() {
-        return stats;
     }
 
     private void toCry() {

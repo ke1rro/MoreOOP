@@ -1,15 +1,13 @@
 package characters;
 
+import lombok.Getter;
+
 public class Elf implements Character {
+    @Getter
     private CharacterStats stats;
 
     public Elf() {
         this.stats = new CharacterStats(10, 10);
-    }
-
-    @Override
-    public CharacterStats getStats() {
-        return stats;
     }
 
     @Override
