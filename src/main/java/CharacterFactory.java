@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
  * Hybrid Factory
@@ -62,6 +63,6 @@ public abstract class CharacterFactory {
     public static List<String> getAvailableCharacterTypes() {
         return CHARACTER_CLASSES.stream()
                 .map(Class::getSimpleName)
-                .toList();
+                .collect(Collectors.toList());
     }
 }
