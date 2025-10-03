@@ -26,4 +26,11 @@ public class Elf implements Character {
                     + other.getStats().getPower());
         }
     }
+
+    public String toString() {
+        return "Elf{" +
+                "hp=" + stats.getHp() +
+                ", power=" + stats.getPower() +
+                '}';
+    }
 }

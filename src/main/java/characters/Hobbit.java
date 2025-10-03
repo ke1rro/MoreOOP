@@ -1,6 +1,7 @@
 package characters;
 
 import lombok.Getter;
+import lombok.ToString;
 
 public class Hobbit implements Character {
     @Getter
@@ -22,6 +23,13 @@ public class Hobbit implements Character {
     @Override
     public boolean isAlive() {
         return stats.isAlive();
+    }
+
+    public String toString() {
+        return "Hobbit{" +
+                "hp=" + stats.getHp() +
+                ", power=" + stats.getPower() +
+                '}';
     }
 
 }
